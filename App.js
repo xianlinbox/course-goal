@@ -1,4 +1,4 @@
-import { StyleSheet, FlatList, View, Button, TextInput, FlatList } from 'react-native';
+import { StyleSheet, FlatList, View, Button, TextInput } from 'react-native';
 
 export default function App() {
   return (
@@ -15,7 +15,6 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     paddingTop: 50,
     paddingHorizontal: 16
   },
@@ -30,6 +29,8 @@ const styles = StyleSheet.create({
   textInput: {
     borderWidth: 1,
     borderColor: '#cccccc',
-    width: '70%'
+    width: '70%',
+    margin: 8,
+    padding: 8
   }
 });
