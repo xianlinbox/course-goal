@@ -1,36 +1,30 @@
 import { StyleSheet, FlatList, View, Button, TextInput } from 'react-native';
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <View style={styles.inputContainer}>
-        <TextInput style={styles.textInput} placeholder='type the goal' />
-        <Button title='Add Goal' />
-      </View>
-      <FlatList />
+  function startAddGoalHandler() {
 
+  }
+  return (
+    <View style={styles.appContainer}>
+      <Button
+        title="Add New Goal"
+        color="#a065ec"
+        onPress={startAddGoalHandler}
+      />
+      <View style={styles.goalContainer}>
+        <FlatList />
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  appContainer: {
+    flex: 1,
     paddingTop: 50,
     paddingHorizontal: 16
   },
-  inputContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    paddingBottom: 24,
-    borderBottomWidth: 1,
-    borderBottomColor: '#cccccc'
+  goalContainer: {
+    flex: 5,
   },
-  textInput: {
-    borderWidth: 1,
-    borderColor: '#cccccc',
-    width: '70%',
-    margin: 8,
-    padding: 8
-  }
 });
