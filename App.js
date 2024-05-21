@@ -16,12 +16,14 @@ export default function App() {
   }
 
   function addGoal(newGoal) {
-    setCourseGoals([...courseGoals, newGoal])
+    setCourseGoals([...courseGoals, { text: newGoal, id: Date.now() }])
     setModalIsVisible(false)
   }
 
-  function deleteGoal(goal) {
-
+  function deleteGoal(goal_id) {
+    setCourseGoals((courseGoals) => {
+      return courseGoals.filter((goal) => goal.id !== goal_id)
+    });
   }
   return (
     <>
@@ -33,11 +35,13 @@ export default function App() {
         />
         <GoalInput visible={modalIsVisible} onCancel={closeAddGoalHandler} addGoal={addGoal} />
         < View style={styles.goalContainer}>
-          <FlatList data={courseGoals} renderItem={(itemData) => {
-            return (
-              <GoalItem onDeleteItem={deleteGoal(itemData.item)} text={itemData.item} />
-            )
-          }} />
+          <FlatList data={courseGoals}
+            renderItem={(itemData) => {
+              return (
+                <GoalItem onDeleteItem={deleteGoal} item={itemData.item} />
+              )
+            }}
+            keyExtractor={(item, _) => { return item.id }} />
         </View>
       </View >
     </>
